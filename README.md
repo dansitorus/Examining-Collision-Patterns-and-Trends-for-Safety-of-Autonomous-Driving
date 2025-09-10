@@ -91,18 +91,13 @@ The pie chart above shows the distribution of severity of damage sustained on th
 In conclusion, the dataset has been checked and thoroughly cleaned, making it suitable for further analysis. A sample of the report has been shown with the data extracted into a CSV file and compiled into a raw table. After cleaning the raw data, a summary of the table with key variables and description has been presented to provide an overview of the dataset's structure. Additionally, important variables such as type of collision and damage severity have been visualized using pie charts to offer a clearer understanding of the underlying patterns within the data. 
 
 
-
-
-
-
-
 # Chapter 4: Modeling and Evaluation 
 This study employed both predictive modeling and association rule mining (ARM) techniques to better understand patterns and factors contributing to AV collisions. The predictive models identified key variables which influenced damage severity and association rule showed co-occurrences and conditional relationships between specific accident conditions. A focus on minor and moderate damage were used as they had the most significance based on the dataset. 
 Association Rule Mining Analysis
 The association rule mining was applied and used on the dataset with conditions associated with minor damage. The Apriori algorithm was applied to the dataset using the mlxtend library in Python. This would help discover the antecedents (features) that frequently lead to a minor collision (consequent). As mentioned previously, all the categorical variables have been converted into boolean format which is more suitable for binary encoding and mining and unnecessary columns were dropped. The min_support = 0.05 was used  to keep only items that would appear in 5% of the data to balance performance. The metric of lift was used to measure how much more likely items would occur together instead of chance. 
 239 frequent features were found in the dataset and some were notably high. A table below shows the patterns with high support. 
+<img width="975" height="225" alt="image" src="https://github.com/user-attachments/assets/564aa334-0d1b-409c-86a0-3a511c6dd0f9" />
 
- 
 Table 3: Frequent Features
 Based on the table, the patterns suggest that collisions that occur in the morning, the AV going straight and Right Rear damage on the vehicle was very common. This could be taken a look at more seriously by AV developers on why the right side of the damages are more common. 
 The Apirori algorithm was used with a minimum support threshold of 5% to identify the frequent features. The association rules were generated based on the confidence metric with a minimum threshold of 50% as this would focus on predictive strength. The focus on the feature where the consequent “minor damage” was narrowed down. A filter was used to focus on these rules.
@@ -110,7 +105,8 @@ The Apirori algorithm was used with a minimum support threshold of 5% to identif
 ●	Confidence ratio >10%
 ●	High support and lift values
 These filters were used to ensure that the insights remain practical and easier to understand. 2-3 antecedents were used as any more would become overly complex and difficult to interpret and often results in overfitting. The confidence ratio of >10% would help identify stronger rules than average and ensure that only good performing and meaningful rules were retained. A high support and lift values helps with reliable and non-random rules that would have potential for further application. 
- 
+ <img width="975" height="577" alt="image" src="https://github.com/user-attachments/assets/9cf10897-e7de-4ebf-aaf1-57b8d530a32e" />
+
 Table 4: Top Rules of Consequent in Minor Damage
 The top 6 rules were identified and shown in the table below in order of highest confidence for minor damage. Based on the rules in the table above, minor damage occurs mostly under conditions such as: 
 ●	Clear Weather
@@ -120,7 +116,8 @@ The top 6 rules were identified and shown in the table below in order of highest
 Although these environmental features are powerful, these weather conditions are the most common weather conditions in California which may mask edge cases. While AVs seem to perform well under these ideal conditions, further testing is required so that the model would have more exposure. 
 An interesting observation from the rules generated is the 3rd rule of Autonomous mode + rear_end + stopped in traffic with its high lift value compared to the rest. This suggests that when AVs are in autonomous mode, they are likely to be involved in rear-end collisions, possibly due to slow speeds and controlled environments. The lift values are above average as most cases had above 1.0 but this rule has a 2.87. This  indicates that these conditions have a very strong association likely worth investigating further, strengthening their predictive association. 
 The damage for “major” as the consequent was also performed. The Apriori Algorithm was changed to a min support of 0.01 as the rules generated were very minimal. The minimum confidence was also changed to 30%. These were used as the dataset did not have many major outcomes for damage as it is rare in this dataset. 
- 
+ <img width="975" height="248" alt="image" src="https://github.com/user-attachments/assets/1a12816f-a726-4132-beaa-c755e268a576" />
+
 Table 5: Top Rules of Consequent in Major Damage
 Above are the rules generated. Only 2 rules were generated as expected as only a few feature combinations met the support and confidence thresholds. When it is dark with streetlights, there is a 30.77% chance of major damage with a strong lift of 10.37. This could be due to the night driving of vehicles which are more likely for a major accident to happen. However, this can also be an outlier due to the nature of the dataset being very small and this result should just be noted instead. 
 
@@ -129,31 +126,29 @@ Exploring the relationship between the conditions and the severity of AV collisi
 The dataset was very imbalanced due to the reports involved being mostly involved with minor damages and thus the class distribution was imbalanced. The training of the data was balanced with random undersampling of the majority damage class. Undersampling was used instead of oversampling due to the smaller dataset size (338 observations after cleaning) and was at risk of overfitting. This was in favor of a simpler and cleaner approach in the small dataset used and provided a straightforward method. The models were then trained on this balanced dataset and evaluated with a split into a 70% training set and a 30% testing set. Performance was assessed and evaluated by using the metrics of accuracy, precision, recall, and F1-score. 
 Decision Tree (CART)
 The best performing model was the decision tree, which achieved an accuracy of 77.5%. By using the grid_search with 5-fold cross validation, the model would evaluate the performance and ensure the results are reliable and not overly reliant on the training/testing split. The best parameters were identified as max_depth 3, min_samples_leaf = 2, and min_samples_split = 2. The class 0 (minor damage) was predicted with high precision (0.82) and high recall (0.93) indicating a strong performance in this class. However, the recall for class 1 (moderate/major damage) had low recall (0.11) and precision (0.25), which revealed the imbalance issue in the dataset. 
- 
+ <img width="975" height="165" alt="image" src="https://github.com/user-attachments/assets/ca282cc0-dca2-48ba-af57-59fa2d5d080a" />
+
 Table 6: CART Results
 The feature importance was also identified with weather conditions being the most influential followed by number of vehicles involved, road conditions, and autonomous mode. 
- 
+ <img width="975" height="204" alt="image" src="https://github.com/user-attachments/assets/22686438-9bbe-46b5-a07f-e457e4abdbd3" />
+
 Table 7: Feature Importance of CART
 Logistic Regression
 Logistic regression model was evaluated with both before and after hyperparameter tuning. Before tuning, the model achieved an accuracy of 64.7% while the tuned parameter achieved 66.7%. The random state of 42, ensured reproducibility and the model was then fit on the balanced training data after undersampling. A hyperparameter tuning with grid search was performed and “C” which controls the regularization strength and “solver” optimized the algorithm for solving the logistic regression.The logistic regression was then trained using the optimal parameters found and evaluated and compared against the untuned version.  C = 0.1 and liblinear solver was the best configuration and a slight performance increase was seen. Despite the hyperparameter tuning, the model performed similarly to the decision tree where it performed better on the majority class of minor damage. The performance of the logistic regression model is shown below.
- 
+ <img width="975" height="173" alt="image" src="https://github.com/user-attachments/assets/041fa8c2-d179-4cba-82f6-fdd275111c1e" />
+
 Table 8: Logistic Regression Results
-The feature importance for logistic regression is shown in the table below. The most influential factor that was found was the weather condition which was similar to the decision tree. It then showed autonomous mode and number of vehicles had a slight negative relationship with the target variable which implied a weak association which was interesting. .  
+The feature importance for logistic regression is shown in the table below. The most influential factor that was found was the weather condition which was similar to the decision tree. It then showed autonomous mode and number of vehicles had a slight negative relationship with the target variable which implied a weak association which was interesting.
+<img width="975" height="213" alt="image" src="https://github.com/user-attachments/assets/dfe78ada-a671-4f0c-9ffd-8a36cc5fd56c" />
+
 Table 9: Feature Importance for Logistic Regression
 Naive Bayes
 The Naive Bayes classifier achieved an accuracy of 64.7% and was similar to the logistic regression before its hypertuning. This was expected as it was limited due to the assumption of feature independence.This dataset likely had conditions where weather or road surface may often be interrelated which affected the performance of the model. 
- 
+ <img width="975" height="204" alt="image" src="https://github.com/user-attachments/assets/1e08afc4-82d0-4b3a-a219-0b5f49cdb6ac" />
+
 Table 10: Naive Bayes Results
 It also does not provide the feature importance unlike the other models as it is a probabilistic model that makes strong independent assumptions. Naive Bayes calculates the features independently and thus does not evaluate or rank feature importance. Overall, the model still provided consistent findings on the environmental conditions that are the most important predictors of collision. 
 In conclusion, the models used showed several insights that can be considered for future use regarding factors and patterns of AV collisions. The application of both association rule mining and predictive modeling helped uncover features that were co-occuring conditions in the dataset and few predictive features influencing the outcome of damage severity. Although the models had reasonable accuracy, it continued to struggle with identifying the minority class even after balancing the dataset. The “major” outcome was also very rare in the dataset and the modeling techniques struggled in identifying a pattern or trends which showcased the limitation with this dataset as major damages in real-world AV data is rare. Despite the limitation, the significance of weather conditions, road conditions and operational conditions offered valuable results. 
-
-
-
-
-
-
-
-
 
 
 # Chapter 5: Recommendation and Conclusion 
