@@ -39,21 +39,14 @@ The data used in this study was obtained from the California Department of Motor
 <img width="898" height="698" alt="image" src="https://github.com/user-attachments/assets/344b9e7b-794c-48cb-ac26-31a4187d7873" />
 
 <img width="975" height="973" alt="image" src="https://github.com/user-attachments/assets/03d860bc-d47d-49e5-ad29-2766753947d5" />  
-PDF Collision Report
+
 
 A sample of the report is shown above. The report shows each section of the collision report and the cross which indicates which collision details happened to the vehicle. 
 For the purpose of this analysis, the reports from 2022 to 2024 were downloaded using a Chrome extension to speed up the process. It is then extracted and compiled into a single CSV file. In each report, there are variables such as the model, type of collision, weather, and area of vehicle damage etc.  After cleaning and preprocessing, the final dataset consisted of 338 rows and 279 columns, representing individual collision incidents with the associated variables. 
 Below is a table of the raw data before cleaning and data preparation. 
-BuSINESS NAME	DATE OF ACCIDENT	TIME of ACCIDENT	AM	PM	MODEL	MINOR	MODERATE	MOVING
-Zoox	3182024	446	FALSE	TRUE	ZOOX SEDAN	TRUE	FALSE	FALSE
-Waymo LLC	
+<img width="647" height="370" alt="Screenshot 2025-09-10 161336" src="https://github.com/user-attachments/assets/7ee4dc0e-14d0-48b9-8569-f6d411eded07" />
 
 
-5202024
-	302	TRUE	FALSE	JAGUAR	TRUE	FALSE	FALSE
-WERIDE	3022024	1256	TRUE	FALSE	TOYOTA	FALSE	TRUE	FALSE
-
-Table 1:Raw data 
 Note: This is a simplified sample showing key columns before data cleaning. Several binary flags (TRUE/FALSE) were used across many columns.
 Key Issues In The Dataset
 ●	Inconsistent capitalization: Headers like "BuSINESS NAME" and "VEhICLE YEAR" used mixed cases and were generalized across all the columns. 
