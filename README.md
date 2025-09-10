@@ -36,6 +36,10 @@ The primary motivation for this analysis stems from the critical need to ensure 
 # Chapter 3: Data
 The data used in this study was obtained from the California Department of Motor Vehicles (DMV). Every collision report is published and uploaded onto their website within 10 days of each incident. The DMV has recorded over 735 collision reports as of August 30, 2024 and organized by year dating back to 2014. These reports are publicly available in PDF format on the DMV website. 
 
+<img width="898" height="698" alt="image" src="https://github.com/user-attachments/assets/344b9e7b-794c-48cb-ac26-31a4187d7873" />
+
+<img width="975" height="973" alt="image" src="https://github.com/user-attachments/assets/03d860bc-d47d-49e5-ad29-2766753947d5" />
+
  
 PDF Collision Report
 A sample of the report is shown above. The report shows each section of the collision report and the cross which indicates which collision details happened to the vehicle. 
