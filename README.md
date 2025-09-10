@@ -56,22 +56,22 @@ Key Issues In The Dataset
 ●	Dropped Irrelevant Columns: Columns like “License Plate” and “Vehicle Identification Number” were dropped as they would not be used for analysis. 
 Issues in the dataset were identified and the appropriate data type was used and a test for duplicates was performed. 
  After data preparation and cleaning, Table 1 was created and shows the data variables and description of the dataset for easier interpretability. The table presents each variable grouped by its purpose, indicates the corresponding attribute, and includes a summary statistic showing the percentage next to each attribute.
-Variables	Description 	Values
-Time	Time of collision	AM (39.76%)
-PM (60.24%)
-Date	Date of collision	Date of accident
-2022-2024
-AV mode	If it’s in autonomous or disengaged 	Autonomous (61.01%)
-Conventional (38.99%)
-AV movement	Movement of AV when it collided	Stopped (40.95%), proceeding straight (31.45%), Right turn (4.75%), left turn (4.45%), U turn (0.59%), Backing (5.04%), Slowing/stopping (8.90%), changing lanes (1.48%), Parking (1.48%), Entering Traffic (1.48%), Parked (2.67%), Merging (0.59%), Travelling wrong way (0%), Other1(1.48%)
-Object it collided	What the AV collided with	Bicyclist (10.78%), pedestrian (2.94%), undefined (58.82%), hit object (27.45%)
-Weather	Weather during the collision	Clear (83.09%), Cloudy (10.98%), Raining (6.23%), Fog/visibility (0.30%)
-Lighting	Lighting during the collision	Daylight (64.69%), Dusk/Dawn (2.97%), Dark with streetlights (30.86%)
-Roadway Condition	Condition of the road where it collided	No unusual conditions (91.69%), Reduced roadway width (0.89%), obstruction (1.19%), construction area (0.59%), other2 (2.37%)
-Surface	Surface of the road where it collided	Dry (89.02%), Wet (10.98%)
-Type of collision	Type of collision 	Head On (15.91%), Side swipe (32.95%), Rear end (44.32%), broadside (6.82%), overturned (0%)
-Damage area	Where the damage of the AV is	Left Rear (17.27%), Rear Bumper (18.88%), Right Rear (16.87%), Left Rear Passenger (5.02%), Right Rear Passenger (3.21%), Front Driver Side (7.03%), Front Passenger Side (5.62%), Left Front Corner, (10.44%) Right Front Corner (10.04%), Front Bumper (5.62%)
-Damage Type	Damage level of the AV. 	unknown_damage(0.3%), none(8%), minor(72.8%), moderate(15.7%), major(3.3%)
+| **Variable**          | **Description**                  | **Values**                                                                                                                                                                                                 |
+|------------------------|----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Time**              | Time of collision                | AM (39.76%), PM (60.24%)                                                                                                                                                                                  |
+| **Date**              | Date of collision                | 2022–2024                                                                                                                                                                                                 |
+| **AV mode**           | If it’s in autonomous or disengaged | Autonomous (61.01%), Conventional (38.99%)                                                                                                                                                                |
+| **AV movement**       | Movement of AV when it collided  | Stopped (40.95%), Proceeding straight (31.45%), Right turn (4.75%), Left turn (4.45%), U-turn (0.59%), Backing (5.04%), Slowing/stopping (8.90%), Changing lanes (1.48%), Parking (1.48%), Entering traffic (1.48%), Parked (2.67%), Merging (0.59%), Travelling wrong way (0%), Other (1.48%) |
+| **Object collided**   | What the AV collided with        | Bicyclist (10.78%), Pedestrian (2.94%), Undefined (58.82%), Hit object (27.45%)                                                                                                                          |
+| **Weather**           | Weather during the collision     | Clear (83.09%), Cloudy (10.98%), Raining (6.23%), Fog/visibility (0.30%)                                                                                                                                  |
+| **Lighting**          | Lighting during the collision    | Daylight (64.69%), Dusk/Dawn (2.97%), Dark with streetlights (30.86%)                                                                                                                                     |
+| **Roadway Condition** | Condition of the road            | No unusual conditions (91.69%), Reduced roadway width (0.89%), Obstruction (1.19%), Construction area (0.59%), Other (2.37%)                                                                              |
+| **Surface**           | Surface of the road              | Dry (89.02%), Wet (10.98%)                                                                                                                                                                                |
+| **Type of collision** | Type of collision                | Head-on (15.91%), Side swipe (32.95%), Rear end (44.32%), Broadside (6.82%), Overturned (0%)                                                                                                              |
+| **Damage area**       | Where the AV was damaged         | Left Rear (17.27%), Rear Bumper (18.88%), Right Rear (16.87%), Left Rear Passenger (5.02%), Right Rear Passenger (3.21%), Front Driver Side (7.03%), Front Passenger Side (5.62%), Left Front Corner (10.44%), Right Front Corner (10.04%), Front Bumper (5.62%) |
+| **Damage type**       | Damage level of the AV           | Unknown (0.3%), None (8%), Minor (72.8%), Moderate (15.7%), Major (3.3%)                                                                                                                                  |
+
+
 Table 2: Data after cleaning (rounded up)
 Below is a line graph of a  time series created in Python of the number of monthly accidents of the dataset from January 2022 to August 2024. The number of accidents reported fluctuates throughout the span of these years. There was a consistent high number of AV reports during 2022, ranging between 5-22 and a sharp decline of accidents during the tail end of 2023. Several news events and regulatory changes during this period occurred. 
 ●	Cruise Suspension: In October 2023, the DMV suspended self-driving car permits following safety concerns and incidents which included a pedestrian collision. This led to Cruise halting its robotaxi operations nationwide. 
