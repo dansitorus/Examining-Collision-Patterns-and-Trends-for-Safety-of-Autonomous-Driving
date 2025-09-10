@@ -72,16 +72,16 @@ Issues in the dataset were identified and the appropriate data type was used and
 | **Damage type**       | Damage level of the AV           | Unknown (0.3%), None (8%), Minor (72.8%), Moderate (15.7%), Major (3.3%)                                                                                                                                  |
 
 
-Table 2: Data after cleaning (rounded up)
 Below is a line graph of a  time series created in Python of the number of monthly accidents of the dataset from January 2022 to August 2024. The number of accidents reported fluctuates throughout the span of these years. There was a consistent high number of AV reports during 2022, ranging between 5-22 and a sharp decline of accidents during the tail end of 2023. Several news events and regulatory changes during this period occurred. 
 ●	Cruise Suspension: In October 2023, the DMV suspended self-driving car permits following safety concerns and incidents which included a pedestrian collision. This led to Cruise halting its robotaxi operations nationwide. 
+<img width="975" height="477" alt="image" src="https://github.com/user-attachments/assets/b66ec3ba-7951-43d3-992b-e8f08b2c832e" />
 
  
 Figure 1: Number of Monthly Accidents
 
-
- 
 Figure 2: Pie Chart of Damage Distribution
+<img width="975" height="867" alt="image" src="https://github.com/user-attachments/assets/b15dfff5-8ac6-479b-96fe-8538ce5adce5" />
+
 The pie chart above shows the distribution of severity of damage sustained on the AV vehicle collisions. The data highlights the majority of reported AV collisions resulting in minor damages or low-impact outcomes. 
 ●	Minor damage accounted for 72.8% of cases which aligns with the notion that AVs tend to operate at lower speeds particularly in urban or testing environments. 
 ●	Moderate damage represents 15.7% of cases which reflect that the vehicle would likely require some repairs but no threat to the occupant safety. 
